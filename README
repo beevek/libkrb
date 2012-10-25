@@ -1,0 +1,62 @@
+######################################################################
+# libkrb
+# Kris Beevers <kbeevers@voxel.net>
+######################################################################
+
+This is a C++ class library with generically useful classes for doing
+some fairly advanced and/or high-volume stuff.
+
+Most of the library consists of generic data structures and
+algorithms, including:
+
+* Bloom filter
+* Counting Bloom filter
+* Timeout Bloom filter
+* Lossy hash table
+* LRU key/value memory cache
+* Ring buffer
+* Mersenne twister RNG
+* Murmur hash function
+* Discrete PMF sampling
+* Online working set size estimation
+* Generic resource pool with support for user-defined sizing policies
+* Libevent-based thread pool for asynchronous job execution
+* LC-Trie for prefix set membership
+
+There are also a few more utilitarian classes:
+
+* Cached time_t/timeval for high volume servers
+* Synchronization of workers at a barrier
+* String and strerror-based exceptions
+* Mutex locking objects
+* Apache CLF log entry parser
+* Apache CLF log file playback
+* Simple config parser that works with boost's program_options
+
+No doubt I will add more.
+
+
+######################################################################
+
+Requirements:
+
+* g++ 4.4 or greater
+* Boost header file library
+* Pthreads
+* Libevent (for thread pools)
+
+Compiling a program:
+
+Some of the data structures in this library are implemented entirely
+in header files.  However, you'll often need to link with the library
+since a lot of the data structures rely on, say, murmur_hash.
+
+You should link against -lkrb and -lpthread.  If you are using
+thread_pool.hpp, you must also link against -levent.
+
+
+######################################################################
+
+Installing:
+
+Just run (make && make install).
