@@ -403,6 +403,7 @@ void lc_trie<IPType, adrsize>::build_recursive
       bits = branch + newprefix - base[p].len;
       for(i = bitpat; i < bitpat + (1<<bits); ++i)
         build_recursive(tree, base, newprefix+branch, p, 1, adr+i, nextfree);
+      bitpat += (1 << bits) -1;
     } else
       build_recursive(tree, base, newprefix+branch, p, k, adr+bitpat, nextfree);
 
